@@ -67,8 +67,8 @@ function Navbar() {
           ))}
         </nav>
         <div className="hidden md:flex items-center gap-4">
-          <a href="tel:+78001234567" className="text-sm font-semibold text-slate-800 hover:text-emerald-600 transition-colors">
-            8 800 123-45-67
+          <a href="tel:+79782203380" className="text-sm font-semibold text-slate-800 hover:text-emerald-600 transition-colors">
+            +7 978 220-33-80
           </a>
           <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white">
             Оставить заявку
@@ -386,6 +386,22 @@ function About() {
 }
 
 function Contacts() {
+  const [files, setFiles] = useState<File[]>([])
+  const MAX_FILES = 10
+
+  const handleFiles = (incoming: FileList | null) => {
+    if (!incoming) return
+    const next = [...files, ...Array.from(incoming)].slice(0, MAX_FILES)
+    setFiles(next)
+  }
+
+  const removeFile = (idx: number) => setFiles(f => f.filter((_, i) => i !== idx))
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault()
+    handleFiles(e.dataTransfer.files)
+  }
+
   return (
     <section id="contacts" className="bg-slate-900 py-20">
       <div className="max-w-7xl mx-auto px-6">
@@ -396,8 +412,8 @@ function Contacts() {
             <p className="text-slate-400 leading-relaxed mb-10">Отправьте заявку — инженер свяжется с вами в течение одного рабочего дня.</p>
             <div className="space-y-5">
               {[
-                { icon: 'Phone', label: 'Телефон', val: '8 800 123-45-67 (бесплатно)' },
-                { icon: 'Mail', label: 'Email', val: 'info@electroproject.ru' },
+                { icon: 'Phone', label: 'Телефон', val: '+7 978 220-33-80' },
+                { icon: 'Mail', label: 'Email', val: 'elco72@mail.ru' },
                 { icon: 'MapPin', label: 'Адрес', val: 'Москва, ул. Промышленная, 12, офис 301' },
                 { icon: 'Clock', label: 'График', val: 'Пн–Пт, 9:00–18:00 (МСК)' },
               ].map(({ icon, label, val }) => (
@@ -419,7 +435,53 @@ function Contacts() {
               <input placeholder="Ваше имя" className="w-full bg-slate-900 border border-slate-700 text-white placeholder:text-slate-500 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition-colors" />
               <input placeholder="Телефон или Email" className="w-full bg-slate-900 border border-slate-700 text-white placeholder:text-slate-500 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition-colors" />
               <input placeholder="Название объекта" className="w-full bg-slate-900 border border-slate-700 text-white placeholder:text-slate-500 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition-colors" />
-              <textarea placeholder="Краткое описание задачи" rows={4} className="w-full bg-slate-900 border border-slate-700 text-white placeholder:text-slate-500 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition-colors resize-none" />
+              <textarea placeholder="Краткое описание задачи" rows={3} className="w-full bg-slate-900 border border-slate-700 text-white placeholder:text-slate-500 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 transition-colors resize-none" />
+
+              <div>
+                <label
+                  htmlFor="file-upload"
+                  onDrop={handleDrop}
+                  onDragOver={e => e.preventDefault()}
+                  className={`flex flex-col items-center justify-center gap-2 border-2 border-dashed px-4 py-5 cursor-pointer transition-colors ${
+                    files.length >= MAX_FILES
+                      ? 'border-slate-700 opacity-50 cursor-not-allowed'
+                      : 'border-slate-600 hover:border-emerald-500'
+                  }`}
+                >
+                  <Icon name="Paperclip" size={18} className="text-slate-400" />
+                  <span className="text-slate-400 text-xs text-center">
+                    {files.length >= MAX_FILES
+                      ? 'Максимум 10 файлов добавлено'
+                      : <>Прикрепить файлы <span className="text-slate-500">({files.length}/{MAX_FILES})</span><br />ТЗ, схемы, чертежи — любые форматы</>
+                    }
+                  </span>
+                  <input
+                    id="file-upload"
+                    type="file"
+                    multiple
+                    className="hidden"
+                    disabled={files.length >= MAX_FILES}
+                    onChange={e => handleFiles(e.target.files)}
+                  />
+                </label>
+                {files.length > 0 && (
+                  <div className="mt-2 space-y-1.5">
+                    {files.map((f, i) => (
+                      <div key={i} className="flex items-center justify-between bg-slate-900 border border-slate-700 px-3 py-2">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <Icon name="File" size={13} className="text-emerald-400 shrink-0" />
+                          <span className="text-slate-300 text-xs truncate">{f.name}</span>
+                          <span className="text-slate-500 text-xs shrink-0">{(f.size / 1024).toFixed(0)} КБ</span>
+                        </div>
+                        <button onClick={() => removeFile(i)} className="text-slate-500 hover:text-red-400 transition-colors ml-2 shrink-0">
+                          <Icon name="X" size={13} />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-5">
                 Отправить заявку
               </Button>
