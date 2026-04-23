@@ -124,10 +124,12 @@ def handler(event: dict, context) -> dict:
 
     # Отправка через Resend API
     api_key = os.environ.get("RESEND_API_KEY", "")
+    to_email = os.environ.get("NOTIFY_EMAIL", "elco72@mail.ru")
     payload = json.dumps({
         "from": "onboarding@resend.dev",
-        "to": ["elco72@mail.ru"],
-        "subject": f"Новая заявка: {object_name or name}",
+        "to": [to_email],
+        "reply_to": contact if contact else None,
+        "subject": f"Новая заявка с сайта ЭТМПРО: {object_name or name}",
         "html": html_body,
     }).encode("utf-8")
 
@@ -185,4 +187,5 @@ def _format_size(size_bytes: int) -> str:
         return f"{size_bytes / 1024:.1f} КБ"
     else:
         return f"{size_bytes / (1024 * 1024):.1f} МБ"
+# v3
 # v2

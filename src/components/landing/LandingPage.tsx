@@ -14,38 +14,45 @@ const NAV_LINKS = [
 ]
 
 const SERVICES = [
-  { icon: 'Zap', title: 'Электроснабжение', desc: 'Внешнее и внутреннее электроснабжение предприятий. Схемы питания 0,4–110 кВ, расчёты токов КЗ, выбор оборудования.' },
-  { icon: 'Shield', title: 'РЗА', desc: 'Релейная защита и автоматика: проектирование, уставки, согласование с энергосистемой, программирование МП-терминалов.' },
-  { icon: 'Cpu', title: 'АСУ ТП', desc: 'Автоматизированные системы управления технологическими процессами. SCADA, ПЛК, диспетчеризация.' },
-  { icon: 'Cable', title: 'Кабельные сети', desc: 'Трассировка кабельных линий, расчёт сечений и потерь напряжения, кабельные журналы и спецификации.' },
-  { icon: 'LayoutGrid', title: 'Распредустройства', desc: 'Проектирование ГРЩ, ТП, КРУ, КСО — от однолинейных схем до полного комплекта рабочей документации.' },
-  { icon: 'FileText', title: 'Экспертиза и согласование', desc: 'Сопровождение проекта в государственной экспертизе, согласование ТУ и проекта с сетевыми организациями.' },
+  { icon: 'Zap', title: 'Электроснабжение', desc: 'Внутреннее и наружное электроснабжение 0,4–10 кВ. Однолинейные схемы, расчёты токов КЗ, выбор оборудования, ВРУ, ГРЩ, ТП.' },
+  { icon: 'Cable', title: 'Наружные сети 0,4–10 кВ', desc: 'Проектирование кабельных и воздушных линий электропередачи, трансформаторных подстанций, подключение к сетям.' },
+  { icon: 'Sun', title: 'Освещение', desc: 'Внутреннее и наружное освещение: расчёты по ГОСТ, светотехнические расчёты, рабочие чертежи, спецификации оборудования.' },
+  { icon: 'Sparkles', title: 'Архитектурная подсветка', desc: 'Концептуальное и рабочее проектирование декоративного и архитектурного освещения фасадов, территорий, малых форм.' },
+  { icon: 'CloudLightning', title: 'Молниезащита и заземление', desc: 'Расчёт и проектирование систем молниезащиты, заземляющих устройств в соответствии с РД 34, ГОСТ Р МЭК 62305.' },
+  { icon: 'FileText', title: 'Полный комплект документации', desc: 'Проектная (ПД) и рабочая (РД) документация по ГОСТ Р 21.101-2026. Спецификации, ведомости, сметы по запросу.' },
 ]
 
 const PROJECTS = [
-  { title: 'Нефтеперерабатывающий завод', voltage: '110 кВ', year: '2024', area: '48 000 м²', desc: 'Полный комплекс проектирования электроснабжения НПЗ: ГПП 110/10 кВ, РЗА, кабельные сети, АСУ ТП' },
-  { title: 'Металлургический комбинат', voltage: '35 кВ', year: '2023', area: '62 000 м²', desc: 'Реконструкция системы электроснабжения прокатного цеха, замена КРУ 6 кВ' },
-  { title: 'Химический комплекс', voltage: '10 кВ', year: '2023', area: '19 000 м²', desc: 'Взрывозащищённое электрооборудование, зоны Ex, I категория надёжности' },
-  { title: 'Пищевой завод', voltage: '0,4 кВ', year: '2024', area: '11 000 м²', desc: 'Электроснабжение чистых помещений, АСУ ТП линий розлива и упаковки' },
-  { title: 'Логистический центр', voltage: '10 кВ', year: '2024', area: '35 000 м²', desc: 'Проектирование ТП 10/0,4 кВ, системы освещения склада, противопожарная автоматика' },
-  { title: 'Водоканал', voltage: '6 кВ', year: '2023', area: '8 000 м²', desc: 'Реконструкция ЦРП 6 кВ, замена МП-защит, модернизация АСУ ТП насосных станций' },
+  { title: 'Торговый центр', voltage: '10 кВ', year: '2024', area: '22 000 м²', desc: 'Электроснабжение, внутреннее и наружное освещение, архитектурная подсветка фасада, молниезащита' },
+  { title: 'Производственный корпус (завод)', voltage: '10 кВ', year: '2024', area: '18 500 м²', desc: 'ТП 10/0,4 кВ, силовое электроснабжение цехов, наружные кабельные сети, освещение' },
+  { title: 'Ресторанный комплекс', voltage: '0,4 кВ', year: '2024', area: '2 800 м²', desc: 'Электроснабжение, декоративная подсветка интерьера и фасада, система освещения зала' },
+  { title: 'Складской комплекс (логистика)', voltage: '10 кВ', year: '2023', area: '41 000 м²', desc: 'Наружные сети 10 кВ, ТП, внутреннее освещение, молниезащита и заземление' },
+  { title: 'Автосервис / автомойка', voltage: '0,4 кВ', year: '2023', area: '3 200 м²', desc: 'Силовое электроснабжение, освещение рабочих зон, наружное освещение территории' },
+  { title: 'Фитнес-центр / спортзал', voltage: '0,4 кВ', year: '2024', area: '4 500 м²', desc: 'Электроснабжение, декоративное освещение, наружная подсветка входной группы' },
+  { title: 'Пищевое производство', voltage: '0,4 кВ', year: '2023', area: '6 700 м²', desc: 'Силовое электроснабжение линий, освещение чистых помещений, заземление оборудования' },
+  { title: 'АЗС и топливный комплекс', voltage: '10 кВ', year: '2023', area: '1 800 м²', desc: 'Наружные сети, электроснабжение технологического оборудования, освещение навеса и территории' },
 ]
 
 const STATS = [
   { value: '200+', label: 'реализованных объектов' },
-  { value: '15', label: 'лет на рынке' },
-  { value: '35', label: 'инженеров в штате' },
-  { value: '110 кВ', label: 'макс. класс напряжения' },
+  { value: '15+', label: 'лет на рынке (с 2010 г.)' },
+  { value: '9', label: 'специалистов в команде' },
+  { value: '0,4–10 кВ', label: 'рабочий класс напряжения' },
 ]
 
 const OBJECT_TYPES = [
-  { id: 'industrial', label: 'Промышленный завод', base: 800000 },
-  { id: 'energy', label: 'Энергообъект / ПС', base: 600000 },
-  { id: 'chemical', label: 'Химическое производство', base: 1000000 },
-  { id: 'food', label: 'Пищевое производство', base: 500000 },
-  { id: 'warehouse', label: 'Склад / Логистика', base: 250000 },
+  { id: 'tc', label: 'Торговый центр / магазин', base: 350000 },
+  { id: 'restaurant', label: 'Ресторан / кафе / бар', base: 220000 },
+  { id: 'sport', label: 'Фитнес-центр / спортзал', base: 280000 },
+  { id: 'industrial', label: 'Производственный корпус', base: 480000 },
+  { id: 'food', label: 'Пищевое производство', base: 520000 },
+  { id: 'warehouse', label: 'Склад / логистический центр', base: 220000 },
+  { id: 'auto', label: 'Автосервис / автомойка', base: 200000 },
+  { id: 'azs', label: 'АЗС / топливный комплекс', base: 260000 },
+  { id: 'hotel', label: 'Гостиница / хостел', base: 300000 },
+  { id: 'beauty', label: 'Салон красоты / СПА', base: 180000 },
 ]
-const VOLTAGE_MULT: Record<string, number> = { '04': 1, '10': 1.4, '35': 1.8, '110': 2.5 }
+const VOLTAGE_MULT: Record<string, number> = { '04': 1, '10': 1.35 }
 
 function Navbar() {
   const [open, setOpen] = useState(false)
@@ -116,7 +123,7 @@ function Hero() {
             Проектирование систем электроснабжения и автоматизации
           </h1>
           <p className="text-slate-400 text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
-            Разрабатываем проектную и рабочую документацию для промышленных объектов и коммерческих предприятий. РЗА, АСУ ТП, кабельные сети — под ключ.
+            Проектируем системы электроснабжения и автоматизации для промышленных объектов и коммерческих предприятий. Полный комплект документации по ГОСТ Р 21.101-2026.
           </p>
           <div className="flex flex-wrap gap-4">
             <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8">
@@ -209,18 +216,30 @@ function Projects() {
 
 function Calculator() {
   const [objType, setObjType] = useState(OBJECT_TYPES[0].id)
-  const [area, setArea] = useState(5000)
-  const [voltage, setVoltage] = useState('10')
-  const [hasRza, setHasRza] = useState(false)
-  const [hasAsup, setHasAsup] = useState(false)
-  const [hasExpert, setHasExpert] = useState(false)
+  const [area, setArea] = useState(1000)
+  const [areaInput, setAreaInput] = useState('1000')
+  const [voltage, setVoltage] = useState('04')
+  const [hasLighting, setHasLighting] = useState(false)
+  const [hasArchlight, setHasArchlight] = useState(false)
+  const [hasLightning, setHasLightning] = useState(false)
 
-  const base = OBJECT_TYPES.find(o => o.id === objType)?.base ?? 800000
-  const areaCoeff = 0.8 + (area / 50000) * 1.2
+  const handleAreaInput = (val: string) => {
+    setAreaInput(val)
+    const num = parseInt(val.replace(/\D/g, ''), 10)
+    if (!isNaN(num) && num > 0) setArea(Math.min(num, 50000))
+  }
+
+  const handleSlider = (val: number) => {
+    setArea(val)
+    setAreaInput(String(val))
+  }
+
+  const base = OBJECT_TYPES.find(o => o.id === objType)?.base ?? 350000
+  const areaCoeff = 0.7 + (area / 10000) * 0.9
   const voltCoeff = VOLTAGE_MULT[voltage] ?? 1
-  const extras = (hasRza ? 180000 : 0) + (hasAsup ? 250000 : 0) + (hasExpert ? 120000 : 0)
+  const extras = (hasLighting ? 80000 : 0) + (hasArchlight ? 120000 : 0) + (hasLightning ? 60000 : 0)
   const total = Math.round((base * areaCoeff * voltCoeff + extras) / 10000) * 10000
-  const days = Math.round(30 + (area / 10000) * 15 + (hasRza ? 20 : 0) + (hasAsup ? 25 : 0))
+  const days = Math.round(20 + (area / 5000) * 10 + (hasArchlight ? 10 : 0))
 
   return (
     <section id="calculator" className="bg-white py-20 border-b border-slate-200">
@@ -251,20 +270,31 @@ function Calculator() {
               <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">
                 Площадь объекта: <span className="text-slate-900 font-bold">{area.toLocaleString('ru')} м²</span>
               </p>
+              <div className="flex items-center gap-3 mb-3">
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  value={areaInput}
+                  onChange={e => handleAreaInput(e.target.value)}
+                  className="w-32 border border-slate-300 focus:border-emerald-500 focus:outline-none px-3 py-2 text-sm text-slate-900 font-mono"
+                  placeholder="м²"
+                />
+                <span className="text-slate-400 text-sm">м² — или выберите ползунком</span>
+              </div>
               <input
-                type="range" min={500} max={50000} step={500}
+                type="range" min={100} max={50000} step={100}
                 value={area}
-                onChange={e => setArea(Number(e.target.value))}
+                onChange={e => handleSlider(Number(e.target.value))}
                 className="w-full accent-emerald-600 h-1.5"
               />
               <div className="flex justify-between text-xs text-slate-400 mt-1.5">
-                <span>500 м²</span><span>50 000 м²</span>
+                <span>100 м²</span><span>50 000 м²</span>
               </div>
             </div>
             <div>
               <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Класс напряжения</p>
-              <div className="grid grid-cols-4 gap-2">
-                {[{ v: '04', l: '0,4 кВ' }, { v: '10', l: '10 кВ' }, { v: '35', l: '35 кВ' }, { v: '110', l: '110 кВ' }].map(({ v, l }) => (
+              <div className="grid grid-cols-2 gap-2">
+                {[{ v: '04', l: '0,4 кВ' }, { v: '10', l: '10 кВ' }].map(({ v, l }) => (
                   <button
                     key={v}
                     onClick={() => setVoltage(v)}
@@ -280,12 +310,12 @@ function Calculator() {
               </div>
             </div>
             <div>
-              <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Дополнительно</p>
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Дополнительные разделы</p>
               <div className="space-y-2">
                 {[
-                  { label: 'РЗА и автоматика', val: hasRza, set: setHasRza, price: '+180 000 ₽' },
-                  { label: 'АСУ ТП', val: hasAsup, set: setHasAsup, price: '+250 000 ₽' },
-                  { label: 'Экспертиза и согласование', val: hasExpert, set: setHasExpert, price: '+120 000 ₽' },
+                  { label: 'Освещение (внутреннее / наружное)', val: hasLighting, set: setHasLighting, price: '+80 000 ₽' },
+                  { label: 'Архитектурная подсветка', val: hasArchlight, set: setHasArchlight, price: '+120 000 ₽' },
+                  { label: 'Молниезащита и заземление', val: hasLightning, set: setHasLightning, price: '+60 000 ₽' },
                 ].map(({ label, val, set, price }) => (
                   <label key={label} className="flex items-center justify-between p-3 border border-slate-200 hover:border-slate-300 cursor-pointer transition-colors">
                     <div className="flex items-center gap-3">
@@ -307,9 +337,12 @@ function Calculator() {
           </div>
           <div className="lg:col-span-1">
             <div className="bg-slate-900 p-6 sticky top-20">
-              <p className="text-slate-400 text-xs font-mono uppercase tracking-widest mb-4">Итоговая стоимость</p>
+              <p className="text-slate-400 text-xs font-mono uppercase tracking-widest mb-4">Ориентировочная стоимость</p>
               <p className="text-3xl font-bold text-white leading-tight">
-                {(total * 0.85 / 1000000).toFixed(1)} – {(total / 1000000).toFixed(1)} млн ₽
+                {total < 1000000
+                  ? `${Math.round(total * 0.85 / 1000)} – ${Math.round(total / 1000)} тыс. ₽`
+                  : `${(total * 0.85 / 1000000).toFixed(1)} – ${(total / 1000000).toFixed(1)} млн ₽`
+                }
               </p>
               <div className="mt-6 border-t border-slate-700 pt-5 space-y-3">
                 <div className="flex justify-between text-sm">
@@ -321,8 +354,8 @@ function Calculator() {
                   <span className="text-white text-xs">ПД + РД</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-400">Нормативы</span>
-                  <span className="text-white text-xs">ПУЭ, ГОСТ, СП</span>
+                  <span className="text-slate-400">Нормативная база</span>
+                  <span className="text-white text-xs">ГОСТ Р 21.101-2026</span>
                 </div>
               </div>
               <p className="text-slate-500 text-xs mt-5 leading-relaxed">Расчёт ориентировочный. Точная стоимость — после изучения ТЗ.</p>
@@ -344,19 +377,19 @@ function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
             <p className="text-emerald-600 text-sm font-mono tracking-widest uppercase mb-2">О компании</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Проектируем с 2009 года</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Проектируем с 2010 года</h2>
             <p className="text-slate-600 leading-relaxed mb-5">
-              Специализируемся на проектировании систем электроснабжения, релейной защиты и автоматики для промышленных предприятий нефтегазовой, металлургической, химической и пищевой отраслей.
+              Специализируемся на проектировании систем электроснабжения, освещения, молниезащиты и архитектурной подсветки для торговых, производственных, складских и коммерческих объектов.
             </p>
             <p className="text-slate-600 leading-relaxed mb-8">
-              В штате 35 инженеров с опытом работы от 7 лет. Все специалисты имеют допуски СРО и профессиональные аттестации. Работаем по всей России.
+              Нас 9 человек — небольшая, но слаженная команда с глубокой экспертизой. Документация выпускается строго по ГОСТ Р 21.101-2026. Работаем по всей России.
             </p>
             <div className="space-y-3">
               {[
-                'Допуск СРО к проектированию объектов I и II уровня',
-                'Лицензия Минэнерго на проектирование объектов электроэнергетики',
-                'ISO 9001:2015 — система менеджмента качества',
-                'Партнёр ABB, Siemens, Schneider Electric, ЭКРА',
+                'Допуск СРО к проектированию',
+                'ГОСТ Р 21.101-2026 — актуальный стандарт на проектную документацию',
+                'Официальный партнёр IEK, EKF, Sistemf Electric, Chint, КЭАЗ',
+                'Опыт более 15 лет, 200+ реализованных объектов',
               ].map(f => (
                 <div key={f} className="flex items-start gap-3">
                   <Icon name="CheckCircle" size={16} className="text-emerald-600 mt-0.5 shrink-0" />
@@ -367,10 +400,10 @@ function About() {
           </div>
           <div className="space-y-3">
             {[
-              { q: 'Работаете ли вы в регионах?', a: 'Да, работаем по всей России. Выезд специалистов на объект входит в стоимость.' },
-              { q: 'Сколько занимает проектирование?', a: 'От 30 рабочих дней для небольших объектов до 6 месяцев для крупных промышленных комплексов.' },
-              { q: 'Помогаете ли с экспертизой?', a: 'Да, сопровождаем проект на всех этапах: от ТУ до положительного заключения экспертизы.' },
-              { q: 'Какой минимальный заказ?', a: 'Принимаем проекты любого масштаба — от ТП 0,4 кВ до ГПП 110 кВ.' },
+              { q: 'Работаете ли вы в регионах?', a: 'Да, работаем по всей России. Выезд на объект обсуждается индивидуально.' },
+              { q: 'Сколько занимает проектирование?', a: 'От 20 рабочих дней для небольших объектов. Срок зависит от площади и состава разделов — рассчитаем точно после изучения ТЗ.' },
+              { q: 'Делаете ли проекты для квартир и жилых домов?', a: 'Нет, мы специализируемся на коммерческих и производственных объектах: ТЦ, рестораны, склады, производство, спортзалы, АЗС и т.д.' },
+              { q: 'По какому стандарту оформляете документацию?', a: 'Вся документация выпускается по актуальному ГОСТ Р 21.101-2026 на проектную и рабочую документацию.' },
             ].map(({ q, a }) => (
               <details key={q} className="bg-white border border-slate-200 group">
                 <summary className="flex items-center justify-between px-5 py-4 cursor-pointer list-none select-none">
